@@ -1,13 +1,12 @@
 import { useContext } from 'react'
 import './App.css'
-import { useToaster } from './toast/useToaster'
-function App() {
+import { ToastContext } from './toast/useToaster';
+import { Test } from './Test';
 
-  const { toastContext, Toaster } = useToaster({placement: 'top-end'});
-  const toaster = useContext(toastContext);
-    // 
+function App() {
+  const toaster = useContext(ToastContext);
     const onOpenToast = () => {
-      toaster.create({
+      toaster!.create({
       title: 'テスト',
       description: 'AAAA',
       duration: 3000,
@@ -15,7 +14,7 @@ function App() {
   }
   return (
     <>
-      <Toaster/>
+      <Test/>
       <button onClick={() => onOpenToast()}>
         OPEN TOAST
       </button>

@@ -1,21 +1,22 @@
-import { CreateToasterProps, createToaster } from "@ark-ui/react"
-import { createContext } from "react";
+import { CreateToasterProps, CreateToasterReturn, createToaster } from "@ark-ui/react"
 import { toastElement } from "./ToastBase";
+import { createContext, useContext } from "react";
 
-// NOTE 今後追加なので、一旦Objectの形式で定義
-type Params = {
-  placement?: CreateToasterProps['placement']
+
+export const ToastContext = createContext<CreateToasterReturn[1] | undefined>(undefined);
+
+export const useToastContextValue = () => {
+  return useContext(ToastContext);
 }
+
 export type CreateRenderToaster = CreateToasterProps['render'];
-export const useToaster = (props: Params) => {
+export const useToaster = () => {
   const [Toaster, toast] = createToaster({
-      render: toastElement,
-      placement: props.placement || 'top',
-    },
-  );
-  const toastContext = createContext(toast)
+    render: toastElement,
+    placement: 'top',
+  });
   return {
-    toastContext,
     Toaster,
+    toast,
   }
 }
