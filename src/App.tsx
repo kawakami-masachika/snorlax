@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import './App.css'
-import { ToastContext } from './toast/useToaster';
-import { Test } from './Test';
+import { ToastContext } from './toast/ToastProvider';
 
 function App() {
   const toaster = useContext(ToastContext);
@@ -14,7 +13,6 @@ function App() {
   }
   return (
     <>
-      <Test/>
       <button onClick={() => onOpenToast()}>
         OPEN TOAST
       </button>
