@@ -10,7 +10,10 @@ type Props = {
 export const ToastContext = createContext<CreateToasterReturn[1] | undefined>(undefined);
 
 export const ToastProvider = (props: Props) => {
-  const {Toaster, toast} = useToaster({placement: props.placement, closeButtonLabel: '閉じる'});
+  const {Toaster, toast} = useToaster({
+    placement: props.placement, closeButtonLabel: '閉じる',
+    type: "info"
+  });
     return (
     <ToastContext.Provider value={toast}>
       <Toaster/>

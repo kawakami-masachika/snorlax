@@ -8,7 +8,7 @@ function App() {
       toaster!.create({
       title: 'テスト',
       description: 'AAAA',
-      duration: 3000,
+      duration: 3000000,
     })
   }
   return (

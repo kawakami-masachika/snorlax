@@ -1,10 +1,12 @@
 import { CreateToasterProps, Toast, createToaster } from "@ark-ui/react"
+import { SnorlaxToastDescription } from "./snorlax-toast.css";
 
 export type CreateRenderToaster = CreateToasterProps['render'];
 export type ToastPlacement = CreateToasterProps['placement'];
 export type Props = {
   closeButtonLabel?: string;
   placement: ToastPlacement;
+  type:  'info' | 'warning' | 'danger'
 }
 
 export const useToaster = (props: Props) => {
@@ -14,7 +16,7 @@ export const useToaster = (props: Props) => {
       return (
         <Toast.Root>
           <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Description className={SnorlaxToastDescription}>{toast.description}</Toast.Description>
           <Toast.CloseTrigger>{props.closeButtonLabel}</Toast.CloseTrigger>
         </Toast.Root>
       )
